@@ -1,4 +1,4 @@
-Utilizing Machine Learning to Correct Simulation Outputs for Generating Artificial Experimental Data in Alpha Particle Measurements with Hybrid Semiconductor Detectors
+Machine Learning for Correcting Simulation Outputs in Alpha Particle Measurements with Hybrid Semiconductor Detectors
 
 Authors
 Jaroslav Drobný, Kamilla Sabirzyanova
