@@ -1,16 +1,42 @@
-"Utilizing Machine Learning to Correct Faulty Simulation Outputs for Generating Artificial Experimental Data in Alpha Particle Measurements with Hybrid Semiconductor Detectors"
+Utilizing Machine Learning to Correct Simulation Outputs for Generating Artificial Experimental Data in Alpha Particle Measurements with Hybrid Semiconductor Detectors
 
-Main idea: 
-Use machine learning models to mend faulty simulation output to be able to generate artificial experimental data for alpha particle measurements with hybrid semiconductor detector.
+Authors
+Jaroslav Drobný, Kamilla Sabirzyanova
 
-Hybrid semiconductor detectors are widely used in alpha particle measurements due to their high spatial resolution and energy sensitivity. However, accurately simulating the behavior of such detectors is a challenging task. While tools like Geant4 and Allpix Squared excel at modeling the energy deposition phase, significant gaps remain in the simulation of charge propagation through the sensor and the detector's electronic response. These limitations lead to discrepancies between simulated and experimental data, such as the absence of the "halo" effect in alpha particle measurements and the "volcano effect" during high-energy deposition events.
+Abstract
+Accurately modeling alpha particle interactions in hybrid semiconductor detectors presents a significant challenge. While tools like Geant4 and Allpix Squared effectively simulate energy deposition, they often fail to capture subsequent charge transport and the detector’s full electronic response. As a result, simulated data may lack characteristic features—such as the “halo” effect in alpha particle measurements—leading to discrepancies when compared to real experiments.
 
-This project aims to bridge these gaps by employing advanced machine learning techniques to mend faulty simulation outputs and generate artificial experimental data. Specifically, a CycleGAN model will be developed to transform the imperfect simulation data into a form that closely resembles real experimental results. The approach leverages experimental measurements of alpha particles from an Am source using a Timepix 3 ASIC chip coupled with a silicon sensor of 500 μm thickness.
+This project addresses these shortcomings by employing a CycleGAN-based machine learning approach to transform imperfect simulation outputs into data that closely resemble actual experimental measurements. Using alpha particle data from an Am source recorded on a Timepix 3 ASIC chip with a 500 μm silicon sensor, our method bridges the gap between simulated and experimental data. The resulting synthetic experimental datasets can help researchers better understand complex charge propagation processes and improve future simulation accuracy.
 
-The key tasks of the project include:
+Methodology
+We use a CycleGAN model to learn mappings between two domains: simulated and experimental alpha particle measurement data. The CycleGAN framework enables us to correct structural and intensity discrepancies in the simulated images without explicit paired training data. Key steps include:
 
-1. Data Retrieval: Collecting experimental and simulated data under identical measurement conditions.
-2. Data Preparation: Preprocessing and cleaning data to ensure compatibility with machine learning inputs.
-3. Model Development: Building and training the CycleGAN model to correct structural differences between simulated and experimental cluster patterns.
+Data Acquisition and Preparation:
+Experimental datasets are collected under conditions identical to those of the simulation. We preprocess and normalize both simulated and experimental images for input into the machine learning model.
 
-By integrating machine learning into the simulation workflow, this project aims to enhance the accuracy of simulations, enabling researchers to better understand complex processes like charge propagation and electronic response variability. The outcome will not only improve the fidelity of simulations but also provide a scalable solution for generating high-quality synthetic experimental data for hybrid semiconductor detectors.
+Model Selection (CycleGAN):
+We chose a CycleGAN due to its ability to perform unpaired image-to-image translation. Unlike supervised models, CycleGAN does not require perfectly matched training pairs, making it ideal for bridging the gap between simulation outputs and experimental results.
+
+Training and Optimization:
+The model is trained to preserve structural content while adjusting image characteristics to resemble the experimental distribution. We tune hyperparameters such as the cycle-consistency weight and use validation sets to prevent overfitting.
+
+
+Code & Results
+All code is provided in the accompanying repository. Key components include:
+
+Data Loading and Preprocessing: Scripts to normalize, resize, and partition the datasets into training, validation, and test sets.
+Model Definition and Training: Well-commented Python code, highlighting the CycleGAN architecture and training loop, is included in the Jupyter/Colab notebook. Commented code snippets explain the purpose of each function and module.
+Evaluation and Visualization:
+Generated images are displayed alongside their original simulation inputs and reference experimental data.
+We provide figures that compare the structure of clusters before and after CycleGAN transformation, showcasing improvements in the appearance of important features like the “halo” effect.
+Quantitative metrics (e.g., SSIM, LPIPS) or domain-specific measures can be included as tables or plots, demonstrating that the generated images are more closely aligned with real experimental patterns.
+
+
+Conclusions
+By integrating a CycleGAN model into the simulation workflow, we successfully reduced discrepancies between simulated and experimental alpha particle measurement data. The results suggest that machine learning-driven post-processing can:
+
+Improve the realism and utility of simulation outputs.
+Provide a scalable solution for generating large volumes of synthetic experimental data.
+Help researchers gain deeper insights into the behavior of hybrid semiconductor detectors, ultimately aiding in better detector design and calibration.
+Although promising, this approach may require further refinement. For instance, spatial misalignments or subtle electronic noise effects may still challenge our model. Future work could involve enhanced preprocessing, domain adaptation techniques, or more advanced neural architectures to refine the results.
+
