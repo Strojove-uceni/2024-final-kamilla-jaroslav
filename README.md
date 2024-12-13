@@ -1,13 +1,16 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/rMTkWhxv)
-*Reminder*
-*   *Do not miss [deadline](https://su2.utia.cas.cz/labs.html#projects) for uploading your implementation and documentation of your final project.*
-*   *Include working demo in Colab, in which you clearly demonstrate your results. Please refer to the Implementation section on the [labs website](https://su2.utia.cas.cz/labs.html#projects).*
-*   *Do not upload huge datasets to GitHub repository.*
+"Utilizing Machine Learning to Correct Faulty Simulation Outputs for Generating Artificial Experimental Data in Alpha Particle Measurements with Hybrid Semiconductor Detectors"
 
 Main idea: 
 Use machine learning models to mend faulty simulation output to be able to generate artificial experimental data for alpha particle measurements with hybrid semiconductor detector.
 
-Tasks: 
-- Retrieve experimental data and faulty simulation data for alpha particle measurement with hybrid semiconductor detector. The alpha source used is Am nuclei, the detector utilized contains Timepix 3 ASIC chip and Si sensor with 500um thickness.
-- Prepare experimental and simulation data into the form suitable as an input to machine learning model. This should also involve data cleaning if needed.
-- Build GAN to generate artificial experimental data by mending faulty simulation output and by comparing to the experimental data.
+Hybrid semiconductor detectors are widely used in alpha particle measurements due to their high spatial resolution and energy sensitivity. However, accurately simulating the behavior of such detectors is a challenging task. While tools like Geant4 and Allpix Squared excel at modeling the energy deposition phase, significant gaps remain in the simulation of charge propagation through the sensor and the detector's electronic response. These limitations lead to discrepancies between simulated and experimental data, such as the absence of the "halo" effect in alpha particle measurements and the "volcano effect" during high-energy deposition events.
+
+This project aims to bridge these gaps by employing advanced machine learning techniques to mend faulty simulation outputs and generate artificial experimental data. Specifically, a CycleGAN model will be developed to transform the imperfect simulation data into a form that closely resembles real experimental results. The approach leverages experimental measurements of alpha particles from an Am source using a Timepix 3 ASIC chip coupled with a silicon sensor of 500 μm thickness.
+
+The key tasks of the project include:
+
+1. Data Retrieval: Collecting experimental and simulated data under identical measurement conditions.
+2. Data Preparation: Preprocessing and cleaning data to ensure compatibility with machine learning inputs.
+3. Model Development: Building and training the CycleGAN model to correct structural differences between simulated and experimental cluster patterns.
+
+By integrating machine learning into the simulation workflow, this project aims to enhance the accuracy of simulations, enabling researchers to better understand complex processes like charge propagation and electronic response variability. The outcome will not only improve the fidelity of simulations but also provide a scalable solution for generating high-quality synthetic experimental data for hybrid semiconductor detectors.
